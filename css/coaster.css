@@ -1,0 +1,19 @@
+body{
+	background-color: #EBFCFB;
+}
+
+.green{
+	color: #57A773;
+}
+
+.red{
+	color: #E15634;
+}
+
+.purple{
+	color: #9068be;
+}
+
+#scoreStreak{
+	margin-left: .5em;
+}
