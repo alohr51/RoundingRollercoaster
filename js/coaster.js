@@ -4,8 +4,8 @@ $(document).foundation();
 const UP_CHOICE = "up";
 const DOWN_CHOICE = "down";
 const SAME_CHOICE = "same";
-const CANVAS_HEIGHT = 300;
-const CANVAS_WIDTH = 1150;
+const CANVAS_HEIGHT = 350;
+const CANVAS_WIDTH = $("#canvasContainer").width();
 
 let OPTIONS = {
 	minInt: 0,
@@ -14,16 +14,16 @@ let OPTIONS = {
 
 // Points used to create the bezier curve coaster track
 const downhillPoints = {
-	start: {x: 5, y: 50},
- 	cp1: {x: 300, y: 50},
- 	cp2: {x: 400, y: CANVAS_HEIGHT},
- 	end: {x: CANVAS_WIDTH, y: 260},
+	start: {x: 0, y: 20},
+ 	cp1: {x: CANVAS_WIDTH * .25, y: 50},
+ 	cp2: {x: CANVAS_WIDTH * .5, y: CANVAS_HEIGHT},
+ 	end: {x: CANVAS_WIDTH, y: CANVAS_HEIGHT},
 };
 
 const uphillPoints = {
 	start: {x: 0, y: CANVAS_HEIGHT},
-	cp1: {x: 300, y: CANVAS_HEIGHT},
-	cp2: {x: 900, y: 0},
+	cp1: {x: CANVAS_WIDTH * .25, y: CANVAS_HEIGHT},
+	cp2: {x: CANVAS_WIDTH  * .5, y: 0},
 	end: {x: CANVAS_WIDTH, y: 0},
 };
 
@@ -173,8 +173,9 @@ function draw(doUphill, points, sliderValue) {
 	ctx.bezierCurveTo(points.cp1.x, points.cp1.y, points.cp2.x, points.cp2.y, points.end.x, points.end.y);
 	ctx.stroke();
 
+	// raise the coaster up above the track so the wheels are touching it
 	let offset = -(coasterHeight + (wheel1.y / 2));
-	let t = (sliderValue - 5) / 20;
+	let t = (sliderValue - 10) / 20;
 
 	let bezierPoint = getQuadraticBezierXYatT(
 		{
@@ -208,10 +209,12 @@ function drawCoaster(doUphill, points, bezierPoint) {
 
 	// When the coaster will rotate downward will be right as the curve dips and then back to normal
 	// (no rotation) when the track evens out at the end
-	if((bezierPoint.x > points.cp1.x / 4) && (bezierPoint.x < points.cp2.x * 1.7)) {
-		let rotation = doUphill ? -20 : 20;
+	if((bezierPoint.x > points.cp1.x / 4) && (bezierPoint.x < points.cp2.x * 1.45)) {
+		let rotationNum = CANVAS_WIDTH < 400 ? 55 : 25;
+		let rotation = doUphill ? -(rotationNum) : rotationNum;
 		ctx.rotate(rotation * Math.PI / 180);
 	}
+
 	let coasterHalfWidth = coasterWidth / 2;
 
 	// coaster cart
