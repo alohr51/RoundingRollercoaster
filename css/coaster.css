@@ -17,3 +17,11 @@ body{
 #scoreStreak{
 	margin-left: .5em;
 }
+
+.tooltipText{
+	font-size: 1.2em;
+}
+
+#canvas{
+	display: block;
+}
