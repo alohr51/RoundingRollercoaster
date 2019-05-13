@@ -1,5 +1,11 @@
 ### Rounding Roller Coaster
 
+#### Application
+
+1. Rounding Roller coaster is hosted on github pages - https://alohr51.github.io/rounding-roller-coaster/
+
+#### Download and use locally
+
 1. [Download](https://github.com/alohr51/RoundingRollercoaster/archive/master.zip) the .zip file for this application
 1. unzip the application
    * Windows
