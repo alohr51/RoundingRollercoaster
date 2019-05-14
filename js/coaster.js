@@ -165,9 +165,10 @@ function draw(doUphill, points, sliderValue) {
 
 	// clear the canvas
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.lineWidth = 6;
 
-	// Draw the down track using Cubic Bezier curve
+	ctx.lineWidth = 8;
+
+	// Draw the up/down track using Cubic Bezier curve
 	ctx.beginPath();
 	ctx.moveTo(points.start.x, points.start.y);
 	ctx.bezierCurveTo(points.cp1.x, points.cp1.y, points.cp2.x, points.cp2.y, points.end.x, points.end.y);
@@ -254,7 +255,6 @@ function drawCoaster(doUphill, points, bezierPoint) {
 	ctx.moveTo(coasterHalfWidth, coasterHeight - 45);
 	ctx.lineTo(coasterHalfWidth - 25, coasterHeight - 60);
 	ctx.stroke();
-
 
 	ctx.restore();
 

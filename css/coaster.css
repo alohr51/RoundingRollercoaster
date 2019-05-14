@@ -30,4 +30,21 @@ body{
 
 #canvas{
 	display: block;
+	border: 1px solid;
+	position:relative;
+	z-index:20;
+}
+
+#canvasContainer{
+	width: 100%;
+	display:inline-block;
+	margin: 0 auto;
+	position:relative;
+}
+
+#canvasBackground{
+	height: 100%;
+	width: 100%;
+	position:absolute;
+	z-index:1;
 }
